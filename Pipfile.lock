@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2dbea2041533dab63ed7427625fe2ffc4f16dd1b47821e8a7aaa2836e90efc36"
+            "sha256": "31b972b43f00adeeaa482fdd813771b1e4a57631ddbadfae75fd7963700cc306"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -129,7 +129,7 @@
                 "sha256:e249096428b3ae81b08327a63a485ad0878de3fb939049038579ac0ef61e17e7",
                 "sha256:e8313f01ba26fbbe36c7be1966a7b7424942f670f38e666995b88d012765b9be"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "index": "pypi",
             "version": "==1.1.1"
         },
         "parso": {
@@ -200,6 +200,13 @@
                 "sha256:d023ee369ddd2763310e4c3eae1ff649689440d4ae59d7485eb4cfbbe3e359f7"
             ],
             "version": "==4.3.3"
+        },
+        "uwsgi": {
+            "hashes": [
+                "sha256:faa85e053c0b1be4d5585b0858d3a511d2cd10201802e8676060fd0a109e5869"
+            ],
+            "index": "pypi",
+            "version": "==2.0.19.1"
         },
         "wcwidth": {
             "hashes": [
