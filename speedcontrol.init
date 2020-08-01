@@ -1,0 +1,58 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:          speedcontrol
+# Required-Start:    $local_fs
+# Required-Stop:     $local_fs
+# Default-Start:     S
+# Default-Stop:      1
+# Short-Description: start speedcontrol
+# Description: Start speedcontrol 
+### END INIT INFO
+
+set -e
+ENABLED="yes"
+PATH="/sbin:/bin"
+
+. /lib/lsb/init-functions
+
+error=0
+case "$1" in
+start)
+    if [ "$ENABLED" = "yes" ] || [ "$ENABLED" = "YES" ]; then
+        log_action_begin_msg "Starting firewall:" "speedcontrol"
+        output=`/opt/speedcontrol/start.sh` || error="$?"
+        if [ "$error" = "0" ]; then
+            log_action_cont_msg "Setting kernel variables ($IPT_SYSCTL)"
+        fi
+        if [ ! -z "$output" ]; then
+            echo "$output" | while read line ; do
+                log_action_cont_msg "$line"
+            done
+        fi
+    else
+        log_action_begin_msg "Skip starting firewall:" "speedcontrol (not enabled)"
+    fi
+    log_action_end_msg $error
+    exit $error
+    ;;
+stop)
+    if [ "$ENABLED" = "yes" ] || [ "$ENABLED" = "YES" ]; then
+        log_action_begin_msg "Stopping firewall:" "speedcontrol"
+        output=`/opt/speedcontrol/stop.sh` || error="$?"
+        if [ ! -z "$output" ]; then
+            log_action_cont_msg "$output"
+        fi
+    else
+        log_action_begin_msg "Skip stopping firewall:" "speedcontrol (not enabled)"
+    fi
+    log_action_end_msg $error
+    exit $error
+    ;;
+*)
+    echo "Usage: /etc/init.d/speedcontrol {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
