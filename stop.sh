@@ -1,2 +1,3 @@
 #!/bin/bash
-/bin/kill -INT $(cat /var/run/speedcontrol/service.pid)
+/bin/kill -INT $(cat /opt/speedcontrol/speedcontrol.pid)
+rm /opt/speedcontrol/speedcontrol.pid
