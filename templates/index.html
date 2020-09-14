@@ -13,12 +13,7 @@
 		<div class="text-center">
 			<div><h1>SPEEDIFY CONTROL</h2></div>
 			<div><input type="checkbox" id="checkId" size="large" onstyle="success" offstyle="warning" {{ checked }} data-toggle="toggle"></div>
-			<div><h2>STATUS: </h2></div><div class='status'><h2>{{ status }}</h2></div>
-
-			<div class="text-center">
-				<h4>CONNECTED:DSL+CellPhone = Best for everything except NetFlix</h4>
-				<h4>DISCONNECTED:DSL Only = For NetFlix</h4>
-			</div>
+			<div><h2>STATUS: </h2></div><div class='status'><h2><mark>{{ status }}</mark></h2></div>
 
 		</div>
 		<script>
@@ -30,7 +25,7 @@
 						type: "get",
 						data: {status: current_status},
 						success: function(response) {
-							$(".status").html(response);
+							$(".status").html("<h2><mark>" + response + "</mark></h2>");
 						},
 						error: function(xhr) {
 							console.log("error!")

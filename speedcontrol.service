@@ -6,13 +6,17 @@ Requires=network-online.target
 [Service]
 User=speedcontrol
 Group=speedcontrol
-ExecStart=/opt/speedcontrol/start.sh
-ExecStop=/opt/speedcontrol/stop.sh
 WorkingDirectory=/opt/speedcontrol
+ExecStart=/opt/speedcontrol/speedcontrol_venv/bin/gunicorn -b 0.0.0.0:5000 -w 2 speedcontrol:app
+#ExecStart=/opt/speedcontrol/start.sh
+#ExecStop=/opt/speedcontrol/stop.sh
+RuntimeDirectory=speedcontrol
 Restart=on-failure
 RestartSec=2
 Environment="HOME=/opt/speedcontrol"
-PIDFile=/opt/speedcontrol/speedcontrol.pid
+TimeoutStopSec=5
+#KillSignal=SIGQUIT
+#PIDFile=/opt/speedcontrol/speedcontrol.pid
 
 [Install]
 WantedBy=multi-user.target
