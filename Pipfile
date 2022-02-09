@@ -10,7 +10,7 @@ shell = "*"
 flask = "*"
 ipython = "*"
 easyprocess = "*"
-markupsafe = "*"
+MarkupSafe = "1.1.1"
 gunicorn = "*"
 
 [requires]
